@@ -132,8 +132,13 @@ const Index = () => {
 
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center space-y-8 animate-fade-in">
-            <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-semibold mb-4">
-              🚀 19 декабря 2024 · 19:00–22:00
+            <div className="space-y-2">
+              <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-semibold">
+                🚀 19 декабря 2024 · 19:00–22:00
+              </div>
+              <div className="text-muted-foreground text-sm md:text-base">
+                Санкт-Петербург, м. Технологический институт. <span className="text-secondary font-semibold">Вход свободный!</span>
+              </div>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-tight">
               Нейросети для<br />
