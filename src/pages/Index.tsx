@@ -22,7 +22,7 @@ const Index = () => {
   });
 
   useEffect(() => {
-    const eventDate = new Date('2024-12-19T19:00:00').getTime();
+    const eventDate = new Date('2025-12-19T19:00:00').getTime();
 
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -134,7 +134,7 @@ const Index = () => {
           <div className="text-center space-y-8 animate-fade-in">
             <div className="space-y-2">
               <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-primary text-sm font-semibold">
-                🚀 19 декабря 2024 · 19:00–22:00
+                🚀 19 декабря 2025 · 19:00–22:00
               </div>
               <div className="text-muted-foreground text-sm md:text-base">
                 Санкт-Петербург, м. Технологический институт. <span className="text-secondary font-semibold">Вход свободный!</span>
@@ -580,7 +580,7 @@ const Index = () => {
                 Нейросети для бизнеса и SEO
               </p>
               <p className="text-muted-foreground">
-                19 декабря 2024 · Lucky Pizza · 19:00–22:00
+                19 декабря 2025 · Lucky Pizza · 19:00–22:00
               </p>
             </div>
             <div className="flex gap-4">
@@ -603,7 +603,7 @@ const Index = () => {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-border/30 text-center text-muted-foreground">
-            <p>© 2024 Все права защищены</p>
+            <p>© 2025 Все права защищены</p>
           </div>
         </div>
       </footer>
