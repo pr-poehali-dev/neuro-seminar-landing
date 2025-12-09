@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,6 +14,36 @@ const Index = () => {
     comment: ''
   });
 
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const eventDate = new Date('2024-12-19T19:00:00').getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance > 0) {
+        setTimeLeft({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        });
+      }
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -28,7 +58,7 @@ const Index = () => {
       name: 'Никита Титов',
       role: 'Бизнес-тренер и эксперт по AI-контенту',
       bio: 'Бизнес-тренер и эксперт в создании цифрового контента с помощью AI. За годы своей работы Никита помог более 3000 экспертам раскрыть свою уникальность и построить успешные стратегии продвижения, используя нейросети. Он научит вас, как автоматизировать маркетинг и повысить видимость вашего бизнеса с помощью современных AI-инструментов.',
-      image: 'https://cdn.poehali.dev/files/image.png'
+      image: 'https://cdn.poehali.dev/files/Снимок экрана 2025-12-09 в 07.05.38.png'
     },
     {
       name: 'Алексей Яковлев',
@@ -114,6 +144,34 @@ const Index = () => {
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Как AI помогает увеличить прибыль и оптимизировать маркетинг
             </p>
+
+            <div className="flex justify-center gap-4 my-8">
+              <div className="text-center">
+                <div className="bg-card/80 backdrop-blur-sm border border-primary/30 rounded-lg p-4 min-w-[80px]">
+                  <div className="text-4xl font-heading font-black text-primary">{timeLeft.days}</div>
+                  <div className="text-xs text-muted-foreground uppercase mt-1">Дней</div>
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="bg-card/80 backdrop-blur-sm border border-primary/30 rounded-lg p-4 min-w-[80px]">
+                  <div className="text-4xl font-heading font-black text-primary">{timeLeft.hours}</div>
+                  <div className="text-xs text-muted-foreground uppercase mt-1">Часов</div>
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="bg-card/80 backdrop-blur-sm border border-primary/30 rounded-lg p-4 min-w-[80px]">
+                  <div className="text-4xl font-heading font-black text-primary">{timeLeft.minutes}</div>
+                  <div className="text-xs text-muted-foreground uppercase mt-1">Минут</div>
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="bg-card/80 backdrop-blur-sm border border-primary/30 rounded-lg p-4 min-w-[80px]">
+                  <div className="text-4xl font-heading font-black text-primary">{timeLeft.seconds}</div>
+                  <div className="text-xs text-muted-foreground uppercase mt-1">Секунд</div>
+                </div>
+              </div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
               <Button 
                 size="lg" 
@@ -160,6 +218,31 @@ const Index = () => {
               </div>
             </CardContent>
           </Card>
+
+          <div className="mt-12 animate-fade-in">
+            <Card className="bg-card/80 backdrop-blur-sm border-border/50 shadow-2xl overflow-hidden">
+              <CardContent className="p-0">
+                <div className="bg-card/60 p-6 text-center border-b border-border/30">
+                  <h3 className="text-2xl font-heading font-bold text-white mb-2 flex items-center justify-center gap-3">
+                    <Icon name="MapPin" className="text-primary" size={28} />
+                    Как добраться
+                  </h3>
+                  <p className="text-muted-foreground">Lucky Pizza на 2-й Красноармейской улице, 3</p>
+                </div>
+                <div className="relative w-full h-[400px] md:h-[500px] bg-muted/20">
+                  <iframe
+                    src="https://yandex.ru/map-widget/v1/?ll=30.312629%2C59.927282&mode=search&oid=1088007276&ol=biz&z=17"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    style={{ position: 'relative' }}
+                    title="Яндекс.Карта - Lucky Pizza, 2-я Красноармейская улица, 3"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
